@@ -39,3 +39,4 @@ build/
 *.scc
 /Recognizer.Framework/.nuget
 /Recognizer.Framework/packages
+/pdf/Properties/PublishProfiles
