@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Minimal pdf.js text-selection demo</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript">
+	//var url = 'files/tizenfordummies.pdf';
+	//var url = 'files/Michael Simac, P.E. 04-28-2015_full.pdf';
+	//var url = 'files/TypeScript_Succinctly.pdf';
+	
+	//var url = 'http://localhost/Home/DownloadFromBlob2?FileString=Michael%20Simac,%20P.E.%2004-28-2015_full.pdf&caseName=cro204';
+	$(function() {
+	var url = $('#fileUrl').val();
+	ShowPdf(url, 1 ,"Module" );
+
+   
+   
+   $('#searchButton').click(function(){
+		var page = $('#pageStart').val();
+		var searchText = $('#searchText').val();
+		var fileUrl = $('#fileUrl').val();
+		ShowPdf(fileUrl, page , searchText );
+
+	});
+
+	function ShowPdf(_url, _page , _search )
+	{
+		$('#framePdfViewer').empty();
+		var viewrUrl = "pdf.js-gh-pages/web/viewer.html?file=" + escape(_url)+ "#page="+ _page +"&zoom=75&search="+_search+"&phrase=false&phrase=false&hlall=true";
+		$('#framePdfViewer').attr('src', viewrUrl);
+		$('#fullLinkPdfViewer').attr('href', viewrUrl);
+	}
+
+});
+	
+		
+		</script>
+    </head>
+    <body>
+
+
+<div>  
+<select id="fileUrl">
+    
+    <option value="/Home/DownloadFromBlob2?FileString=TypeScript_Succinctly.pdf&caseName=cro204" checked>TypeScript_Succinctly.pdf</option>
+    <option value="/Home/DownloadFromBlob2?FileString=Michael%20Simac,%20P.E.%2004-28-2015_full.pdf&caseName=cro204">Michael%20Simac,%20P.E.%2004-28-2015_full.pdf</option>
+
+    <!-->option value="http://localhost/Home/DownloadFromBlob2?FileString=TypeScript_Succinctly.pdf&caseName=cro204" checked>TypeScript_Succinctly.pdf</option>
+  <option-- value="http://localhost/Home/DownloadFromBlob2?FileString=Michael%20Simac,%20P.E.%2004-28-2015_full.pdf&caseName=cro204">Michael%20Simac,%20P.E.%2004-28-2015_full.pdf</option-->
+    <!--option value="http://datageekslaw.blob.core.windows.net/cro204/TypeScript_Succinctly.pdf" checked>TypeScript_Succinctly.pdf</option>
+  <option value="http://datageekslaw.blob.core.windows.net/cro204/Michael%20Simac,%20P.E.%2004-28-2015_full.pdf">Michael%20Simac,%20P.E.%2004-28-2015_full.pdf</option-->
+</select>
+  <span>Search: <input id="searchText" type="text" value="" placeholder="Search text" /></span>
+  <span>Page: <input id="pageStart" type="text" value="1" placeholder="Page number" /></span>
+  <button id="searchButton">Search</button>
+</div>
+
+<div>
+
+<a id="fullLinkPdfViewer" href="">Full View</a>
+<br />
+<iframe id="framePdfViewer" src="" width="800px" height="1000"></iframe>
+
+</div>
+
+      
+    </body>
+</html>
